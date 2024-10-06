@@ -1,0 +1,105 @@
+::-webkit-scrollbar{
+  display: none;
+}
+.row-wrapper{
+  position: relative;
+  margin: 5px 0;
+  background-color: #000;
+  z-index: 100;
+}
+.row-wrapper .arrow{
+  --side-rate: 10px;
+  position: absolute;
+  z-index: 12;
+  top: 50%;
+  /* transform: translateY(-50%); */
+  background-color: red;
+  cursor: pointer;
+  font-size: clamp(20px, 3vw, 35px);
+  background-color: rgba(0, 0, 0, 0.329);
+  color: #fff;
+  transition: 0.6s;
+  opacity: 0;
+}
+.row-wrapper:hover .arrow{
+  opacity: 1;
+}
+.row-wrapper .left-arrow{
+  left: var(--side-rate);
+}
+.row-wrapper .right-arrow{
+  right: var(--side-rate);
+}
+.title{
+  position: relative;
+  color: #fff;
+  margin-left: 10px;
+  font-weight: 600;
+  text-transform: capitalize;
+  z-index: 100;
+}
+.row-container{
+    position: relative;
+    width: 100vw;
+    height: auto;
+    background-color: #000;
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+    overflow-x: scroll;
+}
+.cards{
+    position: relative;
+    width: clamp(120px, 15vw, 230px);
+    aspect-ratio: 2 / 3;
+    border-radius: .3rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    background-color: rgb(82, 82, 82);
+    animation: load 2s ease infinite;
+}
+
+@keyframes load{
+  50%{
+    background-color: rgb(49, 49, 49);
+  }
+  100%{
+    background-color: rgb(82, 82, 82);
+  }
+}
+.cards img{
+    height: 100%;
+    width: 100%;
+    scale: 1;
+    /* object-fit: cover; */
+    object-position: center;
+    transition: 0.6s;
+}
+.cards:hover img{
+  scale: 1.1;
+}
+.cards .card-details{
+    position: absolute;
+    bottom: -70%;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    /*height: 50%;*/
+    z-index: 10;
+    color: #fff;
+    transition: 0.6s;
+    padding: 5px 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+}
+.cards:hover .card-details{
+  bottom: 0;
+}
+.card-details p{
+  font-size: clamp(13px, 3vw, 15px);
+  text-align: center;
+  cursor: pointer;
+}
+.card-details .year{
+  font-size: clamp(11px, 3vw, 13px);
+}

@@ -1,0 +1,137 @@
+nav{
+    position: sticky;
+    top: 0;
+    width: 100vw;
+    height: 10vh;
+    max-height: 75px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px 0 20px;
+    background-color: #000;
+    z-index: 1000;
+    box-shadow: 0 10px 10px #0303037c;
+}
+nav .menu{
+    color: #fff;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    display: none;
+    z-index: 10;
+    cursor: pointer;
+}
+.logo-container{
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.logo-container .logo{
+    height: 85%;
+}
+.list-container ul{
+    display: flex;
+    gap: 2rem;
+    /* background: #000; */
+    padding: 5px 10px;
+}
+.list-container ul .close{
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #fff;
+  z-index: 10;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.list-container ul .list-items .list-item{
+    position: relative;
+    color: #fff;
+    font-weight: 400;
+    white-space: nowrap;
+}
+.list-container ul .list-items .list-item::after{
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -5px;
+    border-radius: 5px;
+    background-color: #ff0000;
+    transition: 0.6s;
+}
+.list-container ul .list-items .list-item:hover::after,
+.list-container ul .list-items .list-item.active::after{
+    width: 100%;
+}
+.search-container-wrapper{
+  position: relative;
+}
+.search-container{
+    position: relative;
+    height: 25px;
+    width: 250px;
+    border-radius: .3rem;
+    overflow: hidden;
+}
+.search-container input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0 30px 0 10px;
+}
+.search-container button{
+    position: absolute;
+    height: 100%;
+    right: 0;
+    z-index: 2;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+}
+.search-container button span{
+    font-size: 19px;
+    color: #fff;
+}
+
+@media screen and (max-width:700px) {
+    .logo-container{
+        display: none;
+    }
+    nav .menu{
+        display: block;
+    }
+    .list-container ul{
+        flex-direction: column;
+        background-color: #000;
+        position: absolute;
+        top: 0;
+        padding: 80px 0 0 30px;
+        left: -220px;
+        height: 100vh;
+        width: 200px;
+        z-index: 10;
+        transition: 0.6s;
+    }
+    .list-container ul.opened{
+      left: 0;
+    }
+    .list-container ul .close{
+      display: block;
+    }
+    .search-container{
+      width: 200px;
+    }
+}

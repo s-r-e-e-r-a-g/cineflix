@@ -1,0 +1,25 @@
+.suggestion{
+  position: absolute;
+  background-color: #000;
+  width: 100%;
+  margin-top: 3px;
+  border-radius: .4rem;
+  z-index: 100;
+}
+.suggest{
+  position: relative;
+  border-radius: .1rem;
+  background-color: grey;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.text-suggestion{
+  font-size: 14px;
+  margin-left: 10px;
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

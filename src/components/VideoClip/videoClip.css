@@ -1,0 +1,22 @@
+.video_container{
+    position: relative;
+    background: rgba(0, 0 ,0 ,0.5);
+    color: #fff;
+    margin: 5px 0;
+    padding: 15px 10px 10px 10px;
+}
+.video_container .video_header{
+    margin-bottom: 5px;
+}
+.video_container .video_wrapper{
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 5px 10px;
+    justify-items: center;
+}
+.video_wrapper .video_frame{
+    background-color: grey;
+    border-radius: inherit;
+}

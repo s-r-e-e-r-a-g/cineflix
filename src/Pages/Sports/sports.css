@@ -1,0 +1,8 @@
+.sports-wrapper{
+    position: relative;
+    flex-grow: 1;   
+    resize: both;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

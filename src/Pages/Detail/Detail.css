@@ -1,0 +1,125 @@
+/* .detailCover{
+    overflow-y: scroll;
+} */
+.detail_wrapper{
+    position: relative;
+    width: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+}
+.detail_wrapper::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}
+.detail{
+    position: relative;
+    min-height: 80vh;
+    width: 100%;
+    max-width: 800px;
+    background-color: #0a0a0a;
+    z-index: 10;
+}
+
+.banner-container{
+    --banHeight: 40vh;
+    position: relative;
+    width: 100%;
+    height: var(--banHeight);
+    max-height: 600px;
+    background-color: #fff;
+    border-radius: 5px;
+    z-index: 5;
+    overflow: hidden;
+}
+.banner-container .bannerImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: inherit;
+}
+.banner-container .poster-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    aspect-ratio: 2 / 3;
+    background-color: grey;
+    box-shadow: 0 0 0 700px #0000008c;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.poster-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.detail .detailheader {
+    position: relative;
+    width: 100%;
+    padding: 0 5px;
+}
+.detailheader .detail_title{
+    background-color: red;
+    text-align: center;
+    z-index: 1;
+    margin-top: 5px;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+.detailheader .scontainer{
+    margin: 3px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2px;
+    background-color: transparent;
+}
+.detailheader .genre{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px 0;
+    background-color: transparent;
+}
+.genre p,
+.genre span{
+    font-size: clamp(11px, 2vw, 15px);
+}
+.genre span{
+    color: red;
+}
+.scontainer .rating,
+.scontainer .year{
+    background-color: rgb(243, 17, 17);
+    border-radius: inherit;
+    padding: 0 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(11px, 2vw, 15px);
+    font-weight: 600;
+}
+.rating span {
+    font-size: 18px;
+}
+.overview{
+    padding: 0 5px;
+    color: #fff;
+    text-indent: 100px;
+    font-size: clamp(13px, 2vw, 16px);
+}
+
+@media screen and (max-width:400px){
+  .banner-container{
+    --banHeight: 25vh;
+  }
+}

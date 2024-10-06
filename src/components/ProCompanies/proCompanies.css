@@ -1,0 +1,28 @@
+.compTitle{
+    margin: 5px;
+}
+.procomapny{
+    position: relative;
+    background-color: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 10px;
+}
+.procomapny .companycard{
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    flex: 1;
+}
+.companycard .companyLogo{
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 5px 8px;
+    margin: 2px 7px 2px 10px;
+    width: clamp(70px, 15vw, 100px);
+    object-fit: cover;
+}
