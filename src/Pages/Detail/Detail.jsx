@@ -29,7 +29,7 @@ const Detail = () => {
         placeholder="Search movies, series,..."
         searchLink={searchLinks.searchAll}
       />
-      { (data && video && recom) ? <>
+      { (data || video || recom) ? <>
       <div
         className="detail_wrapper"
         style={

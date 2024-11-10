@@ -28,8 +28,11 @@ const RowItems = ({ rowId, link, name, type, setSearch }) => {
       left: size * i,
       behavior: "smooth",
     });
-    console.log(i);
+    // console.log(i);
   };
+  
+  if(item.length == 0)
+    return
 
   return (
     <div className="row-wrapper">
