@@ -89,7 +89,7 @@ const Detail = () => {
               <div className="rating">
                 <img src={Imdb} className='imdb' alt="" />
                 <p>
-                  {data && data.imdb.rating != "N/A" && data.imdb.rating} {data && data.imdb.count != "N/A" ? "("+data.imdb.count + ")" : "No Rating Available"} 
+                  {data && data.imdb && data.imdb.rating != "N/A" && data.imdb.rating} {data && data.imdb.count != "N/A" ? "("+data.imdb.count + ")" : "No Rating Available"} 
                 </p>
               </div>
               <div className="year">
