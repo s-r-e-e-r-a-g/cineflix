@@ -28,7 +28,6 @@ const Detail = () => {
     fetchStreamingServices(type, id, setService);
     setRecom(`${BASE_URL}${type}/${id}/recommendations?api_key=${API_KEY}`);
   },[type, id]);
-  console.log(data);
   
   
   return (
@@ -90,7 +89,7 @@ const Detail = () => {
               <div className="rating">
                 <img src={Imdb} className='imdb' alt="" />
                 <p>
-                  {data && data.rating.rating != "N/A" && data.rating.rating} {data && data.rating.count != "N/A" ? "("+data.rating.count + ")" : "No Rating Available"} 
+                  {data && data.imdb.rating != "N/A" && data.imdb.rating} {data && data.imdb.count != "N/A" ? "("+data.imdb.count + ")" : "No Rating Available"} 
                 </p>
               </div>
               <div className="year">
@@ -112,7 +111,7 @@ const Detail = () => {
               <div className='streamTitle'>STREAM</div>
               <div className="streamLogo">
                 {service?.flatrate.map((item, i) => (
-                  <div className='box'>
+                  <div className='box' key={item.logo_path+i}>
                     <img src={`https://image.tmdb.org/t/p/w92${item.logo_path}`} alt="" />
                     {/* <p>{item.provider_name}</p> */}
                   </div>
@@ -124,7 +123,7 @@ const Detail = () => {
               <div className='streamTitle'>BUY</div>
               <div className="streamLogo">
               {service?.buy.map((item, i) => (
-                  <div className='box'>
+                  <div className='box' key={item.logo_path+i}>
                     <img src={`https://image.tmdb.org/t/p/w92${item.logo_path}`} alt="" />
                     {/* <p>{item.provider_name}</p> */}
                   </div>
@@ -136,17 +135,13 @@ const Detail = () => {
               <div className='streamTitle'>RENT</div>
               <div className="streamLogo">
               {service?.rent.map((item, i) => (
-                  <div className='box'>
+                  <div className='box' key={item.logo_path+i}>
                     <img src={`https://image.tmdb.org/t/p/w92${item.logo_path}`} alt="" />
                     {/* <p>{item.provider_name}</p> */}
                   </div>
                 ))}
               </div>
             </div>}
-            {/* <img src={`https://image.tmdb.org/t/p/w92${service?.buy[0].logo_path}`} alt="" />
-            {service?.buy[0].provider_name} */
-            console.log(service?.rent == undefined && "not available")
-            }
           </div>
           
           {data && data.production_companies.length > 0 && (
