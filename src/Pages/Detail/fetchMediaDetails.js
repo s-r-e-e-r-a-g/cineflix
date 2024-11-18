@@ -18,7 +18,7 @@ export const fetchMediaDetails = (type, id, setData) =>{
 const fetchImdbRating = async (id) => {
   if(id == undefined)
     return null;
-  return fetch(`http://www.omdbapi.com/?apikey=${OMDB_KEY}&i=${id}`)
+  return fetch(`https://www.omdbapi.com/?apikey=${OMDB_KEY}&i=${id}`)
   .then(data => data.json())
   .then(res =>  {
     let newCount = formatNumber(res.imdbVotes)
