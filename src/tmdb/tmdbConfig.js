@@ -1,5 +1,6 @@
 export const API_KEY = import.meta.env.VITE_API_KEY
 export const BASE_URL = "https://api.themoviedb.org/3/"
+export const OMDB_KEY = import.meta.env.VITE_OMDB_KEY
 
 export const links ={
     "trending" : `${BASE_URL}trending/all/week?api_key=${API_KEY}&language=en-US`,

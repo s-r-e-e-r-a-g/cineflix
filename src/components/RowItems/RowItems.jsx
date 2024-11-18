@@ -19,16 +19,34 @@ const RowItems = ({ rowId, link, name, type, setSearch }) => {
     setSearch && setSearch(false);
   };
 
-  let cardSlider = document.querySelector("#row-slider" + rowId);
-  let size;
+
+  const scrollEndCheck = (cardSlider) => {
+    if((cardSlider?.scrollWidth - cardSlider?.clientWidth) - cardSlider?.scrollLeft < 6){
+      document.querySelector("#right-arrow" + rowId).style.display = "none";
+    }else{
+      document.querySelector("#right-arrow" + rowId).style.display = "block";
+    }
+    if(cardSlider.scrollLeft < 10){
+      
+      document.querySelector("#left-arrow" + rowId).style.display = "none";
+    }else{
+      document.querySelector("#left-arrow" + rowId).style.display = "block";
+    }
+  }
 
   const sliderFn = (i) => {
-    size = cardSlider.clientWidth;
-    cardSlider.scrollBy({
+    let cardSlider = document.querySelector("#row-slider" + rowId);
+    let size;
+    size = cardSlider?.clientWidth;
+    cardSlider?.scrollBy({
       left: size * i,
       behavior: "smooth",
     });
-    // console.log(i);
+    const timeObj = setTimeout(()=>{
+      scrollEndCheck(cardSlider);
+    }, 400)
+    
+    return () => clearTimeout(timeObj);
   };
   
   if(item.length == 0)
@@ -39,6 +57,7 @@ const RowItems = ({ rowId, link, name, type, setSearch }) => {
       <h2 className="title">{name}</h2>
       <span
         className="material-symbols-outlined left-arrow arrow"
+        id={"left-arrow" + rowId}
         onClick={() => sliderFn(-1)}
       >
         navigate_before
@@ -60,6 +79,7 @@ const RowItems = ({ rowId, link, name, type, setSearch }) => {
       </div>
       <span
         className="material-symbols-outlined right-arrow arrow"
+        id={"right-arrow" + rowId}
         onClick={() => sliderFn(1)}
       >
         navigate_next

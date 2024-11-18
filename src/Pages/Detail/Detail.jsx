@@ -11,18 +11,26 @@ import VideoClip from '../../components/VideoClip/VideoClip'
 import RowItems from '../../components/RowItems/RowItems'
 import {API_KEY, BASE_URL} from '../../tmdb/tmdbConfig'
 import "./Detail.css";
+import { fetchStreamingServices } from './fetchStreamingServices';
+import Imdb from '../../Assets/image/imdb.png'
 
 const Detail = () => {
-  const [data,setData] = useState()
-  const [video, setVideo] = useState()
-  const [recom, setRecom] = useState();
-  const {type, id} = useParams([]);
+  const [data,setData] = useState(null);
+  const [video, setVideo] = useState(null)
+  const [recom, setRecom] = useState(null);
+  const [service, setService] = useState(null);
+  const {type, id} = useParams([]);   
+  
   useEffect(()=>{
-    setData(null)
-    fetchMediaDetails(type, id, setData)
-    fetchMediaVideos(type, id, setVideo)
+    setData(null);
+    fetchMediaDetails(type, id, setData);
+    fetchMediaVideos(type, id, setVideo);
+    fetchStreamingServices(type, id, setService);
     setRecom(`${BASE_URL}${type}/${id}/recommendations?api_key=${API_KEY}`);
-  },[type, id])
+  },[type, id]);
+  console.log(data);
+  
+  
   return (
     <div className="detailCover">
       <Navbar
@@ -80,9 +88,9 @@ const Detail = () => {
             </div>
             <div className="scontainer">
               <div className="rating">
-                <span className="material-symbols-outlined">star</span>
+                <img src={Imdb} className='imdb' alt="" />
                 <p>
-                  {data && data.vote_average} ({data && data.vote_count})
+                  {data && data.rating.rating != "N/A" && data.rating.rating} {data && data.rating.count != "N/A" ? "("+data.rating.count + ")" : "No Rating Available"} 
                 </p>
               </div>
               <div className="year">
@@ -97,6 +105,50 @@ const Detail = () => {
           <div className="overview">
             <p>{data && data.overview}</p>
           </div>
+
+          <div className="StreamingServices">
+            {service?.flatrate != undefined && 
+            <div className='streamContainer'>
+              <div className='streamTitle'>STREAM</div>
+              <div className="streamLogo">
+                {service?.flatrate.map((item, i) => (
+                  <div className='box'>
+                    <img src={`https://image.tmdb.org/t/p/w92${item.logo_path}`} alt="" />
+                    {/* <p>{item.provider_name}</p> */}
+                  </div>
+                ))}
+              </div>
+            </div>}
+            {service?.buy != undefined && 
+            <div className='streamContainer'>
+              <div className='streamTitle'>BUY</div>
+              <div className="streamLogo">
+              {service?.buy.map((item, i) => (
+                  <div className='box'>
+                    <img src={`https://image.tmdb.org/t/p/w92${item.logo_path}`} alt="" />
+                    {/* <p>{item.provider_name}</p> */}
+                  </div>
+                ))}
+              </div>
+            </div>}
+            {service?.rent != undefined && 
+            <div className='streamContainer'>
+              <div className='streamTitle'>RENT</div>
+              <div className="streamLogo">
+              {service?.rent.map((item, i) => (
+                  <div className='box'>
+                    <img src={`https://image.tmdb.org/t/p/w92${item.logo_path}`} alt="" />
+                    {/* <p>{item.provider_name}</p> */}
+                  </div>
+                ))}
+              </div>
+            </div>}
+            {/* <img src={`https://image.tmdb.org/t/p/w92${service?.buy[0].logo_path}`} alt="" />
+            {service?.buy[0].provider_name} */
+            console.log(service?.rent == undefined && "not available")
+            }
+          </div>
+          
           {data && data.production_companies.length > 0 && (
             <ProCompanies companies={data && data.production_companies} />
           )}

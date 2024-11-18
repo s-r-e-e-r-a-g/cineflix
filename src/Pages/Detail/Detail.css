@@ -117,6 +117,47 @@
     text-indent: 100px;
     font-size: clamp(13px, 2vw, 16px);
 }
+.imdb{
+    margin: 3px;
+    margin-right: 7px;
+    width: clamp(25px, 4vw, 30px);
+}
+
+.StreamingServices{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.StreamingServices .streamContainer{
+    position: relative;
+    background-color: rgb(0, 0, 0);
+    min-height: 80px;
+    padding: 10px;
+}
+.streamContainer .streamTitle{
+    position: relative;
+    height: 100%;
+    width: fit-content;
+    padding: 0 10px;
+    background-color: red;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-size: clamp(13px, 2vw, 16px);
+}
+.streamContainer .streamLogo{
+    display: flex;
+    gap: 15px;
+    padding-left: 10px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.streamLogo .box img{
+    width: 60px;
+    border-radius: 14px;
+}
+
+
 
 @media screen and (max-width:400px){
   .banner-container{
