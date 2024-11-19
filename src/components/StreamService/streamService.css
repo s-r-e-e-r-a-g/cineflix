@@ -1,0 +1,37 @@
+.streamContainer{
+    position: relative;
+    background-color: rgb(0, 0, 0);
+    min-height: 70px;
+    padding: 10px;
+    padding-left: 25px;
+}
+.streamContainer .streamTitle{
+    position: absolute;
+    writing-mode:vertical-rl; 
+    text-orientation: sideways; 
+    height: 100%;
+    width: fit-content;
+    background-color: red;
+    border-radius: 4px;
+    font-size: clamp(13px, 2vw, 16px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    left: 5px;
+    font-weight: 500; 
+    text-transform: uppercase;
+}
+
+.streamContainer .streamLogo{
+    display: flex;
+    gap: 15px;
+    padding-left: 10px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.streamLogo .box img{
+    width: clamp(45px, 9vw, 55px);
+    border-radius: 10px;
+}
