@@ -1,0 +1,50 @@
+.genreWrapper{
+    position: relative;
+}
+.genreList{
+    position: relative;
+    display: flex;
+    gap: 10px;
+    background-color: #000;
+    padding: 10px;
+    overflow-x: scroll;
+    margin: 0px 0 20px 0;
+}
+.genreList li{
+    background-color: #000;
+    color: #fff;
+    border-radius: 5px;
+    padding: 2px 15px;
+    white-space: nowrap;
+    cursor: pointer;
+    outline: 1px solid #fff;
+    font-size: clamp(12px, 2vw, 16px);
+}
+.genreList li.active {
+    background-color: red;
+}
+.arrow{
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(238, 232, 232, 0.575);
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(20px, 3vw, 25px);
+    opacity: 0;
+    transition: 0.6s;
+    cursor: pointer;
+}
+.genreWrapper:hover .arrow{
+    opacity: 1;
+}
+.left-arrow{
+    left:0
+}
+.right-arrow{
+    right: 0;
+}

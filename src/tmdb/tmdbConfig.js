@@ -3,12 +3,15 @@ export const BASE_URL = "https://api.themoviedb.org/3/"
 export const OMDB_KEY = import.meta.env.VITE_OMDB_KEY
 
 export const links ={
-    "trending" : `${BASE_URL}trending/all/week?api_key=${API_KEY}&language=en-US`,
+    "trending" : `${BASE_URL}trending/all/day?api_key=${API_KEY}&language=en-US`,
     "image_base" : "https://image.tmdb.org/t/p/w1280",
-    "discoverMovie" : `${BASE_URL}discover/movie?api_key=${API_KEY}&with_network=213`,
-    "discoverTv" : `${BASE_URL}discover/tv?api_key=${API_KEY}&with_network=213`,
-    "topRatedMovies" : `${BASE_URL}movie/top_rated?api_key=${API_KEY}&Language=eu-US`,
-    "topRatedTv" : `${BASE_URL}tv/top_rated?api_key=${API_KEY}&Language=eu-US`
+    "discoverMovie" : `${BASE_URL}discover/movie?api_key=${API_KEY}`,
+    "discoverTv" : `${BASE_URL}discover/tv?api_key=${API_KEY}`,
+    "topRatedMovies" : `${BASE_URL}movie/top_rated?api_key=${API_KEY}`,
+    "topRatedTv" : `${BASE_URL}tv/top_rated?api_key=${API_KEY}`,
+    "indianMovies": `${BASE_URL}discover/movie?api_key=${API_KEY}&with_origin_country=IN`,
+    "indianTv": `${BASE_URL}discover/tv?api_key=${API_KEY}&with_origin_country=IN`,
+    "indianLanguage": `${BASE_URL}discover/movie?api_key=${API_KEY}&region=IN&with_original_language=`
 }
 
 export const movieGenre = {

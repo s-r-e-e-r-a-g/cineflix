@@ -6,8 +6,10 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
-    <Router basename="/cineflix/">
+    <Router>
       <App />
     </Router>
   // </React.StrictMode>
 )
+
+// basename="/cineflix/"

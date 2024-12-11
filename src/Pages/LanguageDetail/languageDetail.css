@@ -1,0 +1,16 @@
+.languageWrapper{
+    padding-bottom: 60px;
+    background-color: #000;
+    height: 100%;
+}
+.languageWrapper h2{
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+}
+.list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--posterCardWidth), 1fr));
+    gap: 10px 10px;
+    justify-items: center;
+}

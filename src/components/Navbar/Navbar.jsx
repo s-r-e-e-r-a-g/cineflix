@@ -11,7 +11,10 @@ const Navbar = ({placeholder,searchLink, media_type}) => {
   const [searchKey, setSearchKey] = useState("")
   const [searchData, setSearchData] = useState([])
   const [click, setClick] = useState(false)
-  const [isSearch, setSearch] = useState(false)
+
+  
+  const [activeIndex, setActiveIndex] = useState(-1)
+
   const listRef = useRef();
   const navigate = useNavigate();
   useEffect(()=>{
@@ -26,19 +29,17 @@ const Navbar = ({placeholder,searchLink, media_type}) => {
   },[open])
   useEffect(() => {
     if (searchKey && !click) {
-      // setSearch(false)
      const timer = setTimeout(() => {
       fetch(`${searchLink}${searchKey}`)
         .then(res => res.json())
         .then(data => {
-          setSearchData(data.results);
+          setSearchData(data.results.splice(0, 6));
         })
         .catch(err => console.log(err.message));
     }, 500);
     return () => clearTimeout(timer);
   }else{
     setSearchData([])
-    setSearch(false)
   }
 }, [searchKey]);
 
@@ -51,7 +52,6 @@ const Navbar = ({placeholder,searchLink, media_type}) => {
     e.preventDefault();
     if(searchKey.trim() == "") return;
     navigate(`/search/${searchKey}`);
-    setSearch(true)
     root.scrollTop = 0;
     const timer = setTimeout(()=>{
       setSearchData([])
@@ -59,19 +59,40 @@ const Navbar = ({placeholder,searchLink, media_type}) => {
     return () => clearTimeout(timer); 
   }
 
-  const handleKey = (e) => {
-    console.log(e.key);
-    if(e.key === "ArrowDown"){
-    }else if(e.key === "ArrowUp"){
+
+  const showDetails = (type, id, name) => {
+    navigate(`/${type}/${id}`)
+    setSearchKey(name)
+    setSearchData([])
+    setClick(true)
+  }
+
+
+  const handleKeyDown = (e) => {
+    if (!searchData || searchData.length === 0) return
+
+    if (e.key === 'ArrowDown') {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % searchData.length)
+    } else if (e.key === 'ArrowUp') {
+      setActiveIndex((prevIndex) => (prevIndex - 1 + searchData.length) % searchData.length)
+    } else if (e.key === 'Enter') {
+      const selectedItem = searchData[activeIndex];
+      if (selectedItem) {
+        showDetails(
+          media_type ? media_type : selectedItem.media_type,
+          selectedItem.id,
+          selectedItem.title ? selectedItem.title : selectedItem.name
+        )
+      }
     }
   }
 
   return (
     <>
     <nav>
-        <div className='logo-container'>
+        <NavLink to="/" className='logo-container'>
             <img src={logo} className='logo' alt='logo' />
-        </div>
+        </NavLink>
         <span onClick={()=>setOpen(true)} className="material-symbols-outlined menu">menu</span>
         <div className="list-container">
             <ul ref={listRef} className={open ? "opened" : ""}>
@@ -92,12 +113,12 @@ const Navbar = ({placeholder,searchLink, media_type}) => {
         </div>
         <div className="search-container-wrapper">
         <form className='search-container' onSubmit={searchSubmit}>
-            <input type="text" value={searchKey} onChange={searchFn} placeholder={placeholder} onKeyDown={handleKey} />
+            <input type="text" value={searchKey} onChange={searchFn} placeholder={placeholder} onKeyDown={handleKeyDown} />
             <button type="submit">
                <span className="material-symbols-outlined">search</span>
             </button>
         </form>
-        {searchData && searchKey && <SearchSuggestion data={searchData} setSearchData={setSearchData} setSearchKey={setSearchKey} media_type={media_type} setClick={setClick} handleKey={handleKey} />}
+        {searchData && searchKey && <SearchSuggestion data={searchData} setSearchData={setSearchData} setSearchKey={setSearchKey} media_type={media_type} setClick={setClick} activeIndex={activeIndex} />}
       </div>
     </nav>
     </>

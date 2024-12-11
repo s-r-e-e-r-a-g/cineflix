@@ -13,6 +13,7 @@ import {API_KEY, BASE_URL} from '../../tmdb/tmdbConfig'
 import "./Detail.css";
 import { fetchStreamingServices } from './fetchStreamingServices';
 import Imdb from '../../Assets/image/imdb.png'
+import StreamService from '../../components/StreamService/StreamService';
 
 const Detail = () => {
   const [data,setData] = useState(null);
@@ -20,6 +21,7 @@ const Detail = () => {
   const [recom, setRecom] = useState(null);
   const [service, setService] = useState(null);
   const {type, id} = useParams([]);   
+
   
   useEffect(()=>{
     setData(null);
@@ -29,7 +31,11 @@ const Detail = () => {
     setRecom(`${BASE_URL}${type}/${id}/recommendations?api_key=${API_KEY}`);
   },[type, id]);
   
-  
+  if(!data){
+    return (
+      <Loader />
+    )
+  }
   return (
     <div className="detailCover">
       <Navbar
@@ -89,7 +95,8 @@ const Detail = () => {
               <div className="rating">
                 <img src={Imdb} className='imdb' alt="" />
                 <p>
-                  {data && data.imdb && data.imdb.rating != "N/A" && data.imdb.rating} {data && data.imdb.count != "N/A" ? "("+data.imdb.count + ")" : "No Rating Available"} 
+                  {data && data.imdb && data.imdb.rating != "N/A" && data.imdb.rating} 
+                  {data && data.imdb && data.imdb.count != "N/A" ? "("+data.imdb.count + ")" : "No Rating Available"} 
                 </p>
               </div>
               <div className="year">
@@ -106,42 +113,15 @@ const Detail = () => {
           </div>
 
           <div className="StreamingServices">
-            {service?.flatrate != undefined && 
-            <div className='streamContainer'>
-              <div className='streamTitle'>STREAM</div>
-              <div className="streamLogo">
-                {service?.flatrate.map((item, i) => (
-                  <div className='box' key={item.logo_path+i}>
-                    <img src={`https://image.tmdb.org/t/p/w92${item.logo_path}`} alt="" />
-                    {/* <p>{item.provider_name}</p> */}
-                  </div>
-                ))}
-              </div>
-            </div>}
-            {service?.buy != undefined && 
-            <div className='streamContainer'>
-              <div className='streamTitle'>BUY</div>
-              <div className="streamLogo">
-              {service?.buy.map((item, i) => (
-                  <div className='box' key={item.logo_path+i}>
-                    <img src={`https://image.tmdb.org/t/p/w92${item.logo_path}`} alt="" />
-                    {/* <p>{item.provider_name}</p> */}
-                  </div>
-                ))}
-              </div>
-            </div>}
-            {service?.rent != undefined && 
-            <div className='streamContainer'>
-              <div className='streamTitle'>RENT</div>
-              <div className="streamLogo">
-              {service?.rent.map((item, i) => (
-                  <div className='box' key={item.logo_path+i}>
-                    <img src={`https://image.tmdb.org/t/p/w92${item.logo_path}`} alt="" />
-                    {/* <p>{item.provider_name}</p> */}
-                  </div>
-                ))}
-              </div>
-            </div>}
+            {
+              service?.flatrate != undefined && <StreamService service={service.flatrate} name="Stream" />
+            }
+            {
+              service?.buy != undefined && <StreamService service={service.buy} name="Buy" />
+            }
+            {
+              service?.rent != undefined && <StreamService service={service.rent} name="Rent" />
+            }
           </div>
           
           {data && data.production_companies.length > 0 && (
@@ -154,7 +134,7 @@ const Detail = () => {
         <RowItems
           rowId="132"
           link={recom}
-          name={`Related ${type == "tv" ? "TV Series" : "Movies"}`}
+          name={`Recommended ${type == "tv" ? "TV Series" : "Movies"}`}
           type={type}
         />
       )}

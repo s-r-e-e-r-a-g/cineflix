@@ -1,0 +1,56 @@
+[
+    {
+        "id": 174,
+        "name": "Warner Bros. Pictures",
+        "logo": "https://image.tmdb.org/t/p/w154/zhD3hhtKB5qyv7ZeL4uLpNxgMVU.png",
+        "banner" : "https://cdn.kulturegeek.fr/wp-content/uploads/2023/12/Warner-Bros--1024x585.jpg"
+    },
+    {
+        "id": 33,
+        "name": "Universal Pictures",
+        "logo": "https://image.tmdb.org/t/p/w154/3wwjVpkZtnog6lSKzWDjvw2Yi00.png",
+        "banner" : "https://static.wikia.nocookie.net/greatestmovies/images/1/17/Universal_Pictures.jpeg/revision/latest/scale-to-width-down/1000?cb=20230810212519"
+    },
+    {
+        "id": 25,
+        "name": "20th Century Fox",
+        "logo": "https://image.tmdb.org/t/p/w154/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+        "banner" : "https://priyansh.net/cdn-cgi/imagedelivery/lIUQB0PGOeYmlvsEq1B5CQ/d23644cd-35a8-4202-f656-73bd4936f000/w=9999"
+    },
+    {
+        "id": 4,
+        "name": "Paramount Pictures",
+        "logo": "https://image.tmdb.org/t/p/w154/gz66EfNoYPqHTYI4q9UEN4CbHRc.png",
+        "banner" : "https://logomak.com/blog/wp-content/uploads/2024/05/paramount-pictures-logo-min.png"
+    },
+    {
+        "id": 5,
+        "name": "Columbia Pictures",
+        "logo": "https://image.tmdb.org/t/p/w154/71BqEFAF4V3qjjMPCpLuyJFB9A.png",
+        "banner" : "https://c4.wallpaperflare.com/wallpaper/841/262/325/columbia-logo-movie-picture-wallpaper-preview.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Walt Disney Pictures",
+        "logo": "https://image.tmdb.org/t/p/w154/wdrCwmRnLFJhEoH8GSfymY85KHT.png",
+        "banner" : "https://img10.hotstar.com/image/upload/f_auto,q_90,w_3840/sources/r1/cms/prod/5841/1515841-i-269cdaf2480d"
+    },
+    {
+        "id": 34,
+        "name": "Sony Pictures Entertainment",
+        "logo": "https://image.tmdb.org/t/p/w154/mtp1fvZbe4H991Ka1HOORl572VH.png",
+        "banner" : "https://assetsio.gnwcdn.com/sony-pictures-core.jpg?width=1200&height=1200&fit=bounds&quality=70&format=jpg&auto=webp"
+    },
+    {
+        "id": 3,
+        "name": "Pixar Animation Studios",
+        "logo": "https://image.tmdb.org/t/p/w154/1TjvGVDMYsj6JBxOAkUHpPEwLf7.png",
+        "banner" : "https://img10.hotstar.com/image/upload/f_auto,q_90,w_3840/sources/r1/cms/prod/5842/1515842-i-fa5418ad8e5a"
+    },
+    {
+        "id": 420,
+        "name": "Marvel Studios",
+        "logo": "https://logos-world.net/wp-content/uploads/2020/11/Marvel-Studios-Logo-2013-2016.png",
+        "banner" : "https://img10.hotstar.com/image/upload/f_auto,q_90,w_3840/sources/r1/cms/prod/2497/1731834092497-i"
+    }
+]

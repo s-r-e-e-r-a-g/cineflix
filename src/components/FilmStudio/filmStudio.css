@@ -1,0 +1,12 @@
+.studioWrpper{
+    --width: clamp(100px, 20vw, 160px);
+    position: relative;
+    padding: 20px 15px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--width), 1fr));
+    gap: 15px 10px;
+    justify-items: center;
+    background-color: #000;
+}
+

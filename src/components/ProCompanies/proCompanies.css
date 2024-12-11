@@ -16,6 +16,7 @@
     background-color: rgb(0, 0, 0);
     border-radius: 10px;
     flex: 1;
+    cursor: pointer;
 }
 .companycard .companyLogo{
     background-color: #fff;

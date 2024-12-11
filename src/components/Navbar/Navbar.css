@@ -11,7 +11,7 @@ nav{
     padding: 0 10px 0 20px;
     background-color: #000;
     z-index: 1000;
-    box-shadow: 0 10px 10px #0303037c;
+    /* box-shadow: 0 10px 10px #0303037c; */
 }
 nav .menu{
     color: #fff;

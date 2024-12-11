@@ -32,6 +32,7 @@ const Sports = () => {
     <>
       <Navbar placeholder="Search movies, series,..." searchLink={searchLinks.searchAll} />
       { table ? <div className="table-wrapper">
+        <h2 className='islHeading'>ISL Point Table</h2>
         <TableContainer component={Paper}>
           <Table aria-label="standings table">
             <TableHead>

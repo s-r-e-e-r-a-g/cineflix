@@ -9,11 +9,14 @@
 .suggest{
   position: relative;
   border-radius: .1rem;
-  background-color: grey;
+  background-color: rgb(31, 31, 31);
   margin: 2px;
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+.suggest.active{
+  background-color: red;
 }
 .text-suggestion{
   font-size: 14px;

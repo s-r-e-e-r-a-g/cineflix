@@ -1,0 +1,77 @@
+.studioDetail{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-color: #000;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.studioDetail::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, #0000003a, #00000056, #000000);
+}
+.studioDetail .studioBanner{
+    width: 100%;
+    background-color: #000;
+}
+.studioBanner img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.studioDetail .boxWrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    width: 100%;
+    z-index: 100;
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 60px;
+}
+.boxWrapper .blank{
+    width: 100%;
+    height: clamp(25%, 40vw,  60%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.blank img{
+    width: clamp(150px, 40vw, 400px);
+}
+.blank .studioName{
+    position: relative;
+    color: #fff;
+    font-size: clamp(30px, 9vw, 5rem);
+    text-align: center;
+    text-transform: capitalize;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    z-index: 10;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+    background: linear-gradient(to bottom, #ff0000, #f7d6d6);
+    -webkit-background-clip: text; 
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    letter-spacing: 1px; 
+}
+.listWrapper{
+    color: #fff;
+    background: #ffffff00;
+    backdrop-filter: blur(5px);
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+.listWrapper h2{
+    padding: 5px 10px;
+    font-size: clamp(24px, 3vw, 30px);
+}
+.boxWrapper .list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--posterCardWidth), 1fr));
+    gap: 10px 10px;
+    justify-items: center;
+}

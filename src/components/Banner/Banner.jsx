@@ -21,10 +21,10 @@ const Banner = () => {
       }
     },[data])
     let banWrap = document.querySelector(".banner-wrapper");
-    let banner = document.querySelectorAll(".banner");
+    // let banner = document.querySelectorAll(".banner");
     const sliderFrd = () => {
         let banner = document.querySelectorAll(".banner")
-        banWrap.append(banner[0])
+        banWrap?.append(banner[0])
     }
     const sliderBrd = () => {
         let banner = document.querySelectorAll(".banner")

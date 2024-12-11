@@ -1,55 +1,52 @@
 import './RowItems.css'
-import React, {useState, useEffect} from 'react'
-import { useNavigate } from "react-router-dom"
+import React, { useState, useEffect } from 'react'
+import PosterCard from '../PosterCard/PosterCard';
 
 
-const RowItems = ({ rowId, link, name, type, setSearch }) => {
+const RowItems = ({ rowId, link, name, type }) => {
   const [item, setItem] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(link)
       .then((res) => res.json())
-      .then((data) => setItem(data.results))
+      .then((data) => {
+        setItem(data.results);
+      })
       .catch((err) => console.log(err.message));
-  }, [link]);
-
-  const cardEvent = (id, type) => {
-    navigate(`/${type}/${id}`);
-    setSearch && setSearch(false);
-  };
+  }, []);
 
 
   const scrollEndCheck = (cardSlider) => {
-    if((cardSlider?.scrollWidth - cardSlider?.clientWidth) - cardSlider?.scrollLeft < 6){
+    if ((cardSlider?.scrollWidth - cardSlider?.clientWidth) - cardSlider?.scrollLeft < 6) {
       document.querySelector("#right-arrow" + rowId).style.display = "none";
-    }else{
+    } else {
       document.querySelector("#right-arrow" + rowId).style.display = "block";
     }
-    if(cardSlider.scrollLeft < 10){
-      
+    if (cardSlider.scrollLeft < 10) {
+
       document.querySelector("#left-arrow" + rowId).style.display = "none";
-    }else{
+    } else {
       document.querySelector("#left-arrow" + rowId).style.display = "block";
     }
   }
 
   const sliderFn = (i) => {
     let cardSlider = document.querySelector("#row-slider" + rowId);
+    let cards = document.querySelector(".cards");
     let size;
-    size = cardSlider?.clientWidth;
+    size = cardSlider?.clientWidth - cards?.clientWidth / 2;
     cardSlider?.scrollBy({
       left: size * i,
       behavior: "smooth",
     });
-    const timeObj = setTimeout(()=>{
+    const timeObj = setTimeout(() => {
       scrollEndCheck(cardSlider);
     }, 400)
-    
+
     return () => clearTimeout(timeObj);
   };
-  
-  if(item.length == 0)
+
+  if (item.length == 0)
     return
 
   return (
@@ -62,21 +59,19 @@ const RowItems = ({ rowId, link, name, type, setSearch }) => {
       >
         navigate_before
       </span>
-      <div className="row-container" id={"row-slider" + rowId}>
-        { item?.map((item) => (
-            <div
-              className="cards"
-              key={item.id}
-              onClick={() => cardEvent(item.id, type ? type : item.media_type)}
-            >
-              <img src={`https://image.tmdb.org/t/p/w342${item.poster_path}`} loading='lazy' />
-              <div className="card-details">
-                <p>{item.title ? item.title : item.name}</p>
-              </div>
-            </div>
+      {
+        item ? <div className="row-container" id={"row-slider" + rowId}>
+          {item.map((card) => (
+            <PosterCard card={card} key={card.id} type={type} />
           ))
-        }
-      </div>
+          }
+        </div> :
+          <div className="row-container" id={"row-slider" + rowId}>
+            {Array(10).fill(null).map(_ => (
+              <div className="cards"></div>
+            ))}
+          </div>
+      }
       <span
         className="material-symbols-outlined right-arrow arrow"
         id={"right-arrow" + rowId}
