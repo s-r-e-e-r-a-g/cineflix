@@ -2,7 +2,7 @@ export const API_KEY = import.meta.env.VITE_API_KEY
 export const OMDB_KEY = import.meta.env.VITE_OMDB_KEY
 export const BASE_URL = "https://api.themoviedb.org/3/"
 
-f (!API_KEY) {
+if (!API_KEY) {
   console.error("TMDB API_KEY is missing");
 }
 if (!OMDB_KEY) {
