@@ -1,6 +1,9 @@
-export const API_KEY = import.meta.env.VITE_API_KEY
+// export const API_KEY = import.meta.env.VITE_API_KEY
 export const BASE_URL = "https://api.themoviedb.org/3/"
-export const OMDB_KEY = import.meta.env.VITE_OMDB_KEY
+// export const OMDB_KEY = import.meta.env.VITE_OMDB_KEY
+export const API_KEY = Deno.env.get('API_KEY');
+export const OMDB_KEY = Deno.env.get('OMDB_KEY');
+
 
 export const links ={
     "trending" : `${BASE_URL}trending/all/day?api_key=${API_KEY}&language=en-US`,
