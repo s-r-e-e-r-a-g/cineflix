@@ -15,6 +15,7 @@ if (!API_KEY) {
 if (!OMDB_KEY) {
   console.error("OMDB API_KEY is missing");
 }
+console.log('Deno.env:', typeof Deno !== 'undefined' ? Deno.env.toObject() : 'Deno not available');
 
 
 
